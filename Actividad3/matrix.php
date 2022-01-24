@@ -76,8 +76,11 @@
         }
         
         function sumaRestaEsPosible($matrix1, $matrix2){
-            if (count($matrix1[0]) == count($matrix1[0]) && count($matrix1) == count($matrix2)) {
+            if ((count($matrix1[0]) == count($matrix2[0])) && (count($matrix1) == count($matrix2))) {
                 return true;
+            }
+            else{
+                return false;
             }
         }
 
