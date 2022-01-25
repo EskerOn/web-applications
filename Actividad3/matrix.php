@@ -108,7 +108,7 @@
             $matrix3 = suma($matrix1, $matrix2);
             imprimirMatriz($matrix3);
         }else{
-            echo "No se puede realizar la operacion";
+            echo "No se puede realizar la operacion <br>";
         }
         echo "<br>";
         echo "Resta de matrices: <br>";
@@ -116,7 +116,7 @@
             $matrix3 = resta($matrix1, $matrix2);
             imprimirMatriz($matrix3);
         }else{
-            echo "No se puede realizar la operacion";
+            echo "No se puede realizar la operacion <br>";
         }
         echo "<br>";
         echo "Multiplicacion de matrices: <br>";
@@ -124,7 +124,7 @@
             $matrix3 = multiplicacion($matrix1, $matrix2);
             imprimirMatriz($matrix3);
         }else{
-            echo "No se puede realizar la operacion";
+            echo "No se puede realizar la operacion <br>";
         }
         echo "<br>";
         echo "Transpuesta de matrices: <br>";
