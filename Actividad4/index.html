@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" /> <!--  para utilizar caracteres-->
+
+  <title>formulario de registro de votos de personas</title><!--  titulo del programa -->
+
+
+
+  <style>
+    body {
+      background-color: #87ccc1;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      width: 50%;
+      margin: auto;
+      margin-top: 30px;
+    }
+
+    table {
+      border: 3px solid #cca633;
+      padding: 20px 50px;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color: #edf797;
+
+    }
+  </style>
+
+
+</head>
+
+<style type="text/css">
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 15px;
+
+  }
+</style>
+
+<body>
+
+  <h1>Formulario de registro de votos </h1><!-- encabezado-->
+  <form action="votos.php" name="" method="POST">
+    <!-- lee la informacion insertada y que metodo usamos-->
+
+
+    <tr>
+      <!-- indica que es una fila de una tabla ..inicio fila-->
+      <td>
+        Nombre del votante:
+      </td>
+      <td>
+        <label for="name"></label>
+        <input type="text" name="nombre" />
+      </td>
+    </tr><!-- indica que es una fila de una tabla ..fin de  fila-->
+
+
+    <h2> Selecciona el partido de tu preferencia </h2>
+
+    <table style="width:50%">
+      <!-- definimos la forma de la tabla filas columnas inicia tabla...-->
+
+      <tr>
+        <td>
+          <img src="img/pri.png" width="50px" height="50px">
+        </td>
+        <td>
+          <img src="img/pan.png" width="50px" height="50px">
+        </td>
+        <td>
+          <img src="img/prd.png" width="50px" height="50px">
+        </td>
+        <td>
+          <img src="img/morena.png" width="50px" height="50px">
+        </td>
+        <td>
+          <img src="img/nulo.png" width="50px" height="50px">
+        </td>
+      </tr>
+
+      <tr>
+        <td>PRI
+          <input type="radio" name="voto" value="pri">
+        </td>
+
+        <td>PAN
+          <input type="radio" name="voto" value="pan">
+        </td>
+
+        <td>PRD
+          <input type="radio" name="voto" value="prd">
+        </td>
+
+        <td>MORENA
+          <input type="radio" name="voto" value="morena">
+        </td>
+
+        <td>Anular voto
+          <input type="radio" name="voto" value="nulo">
+          <br>
+        </td>
+      </tr>
+
+    </table>
+
+
+    <tr>
+      <td align="center">
+        <input type="submit" value="Enviar" />
+      </td>
+
+    </tr>
+
+  </form>
+
+
+
+
+</body>
+
+</html>
