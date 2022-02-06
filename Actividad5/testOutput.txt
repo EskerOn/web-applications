@@ -1,0 +1,6 @@
+Conjunto 1 : 20 8 9 3 18 7 17 19 2 14
+Conjunto 2 : 20 14 16 11 6 5 4 17 12 13
+Union de C1 y C2: 20 8 9 3 18 7 17 19 2 14 16 11 6 5 4 12 13
+Interseccion de C1 y C2: 20 17 14
+Diferencia de C1 menos C2: 8 9 3 18 7 19 2
+Diferencia de C2 menos C1: 16 11 6 5 4 12 13
