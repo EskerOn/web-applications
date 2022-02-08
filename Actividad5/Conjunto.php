@@ -59,6 +59,7 @@ class Conjunto{
         for($i=0;$i<count($this->elementos);$i++){
             $string=$string.$this->elementos[$i]." ";
         }
+        $string=$string."tamaño: ".count($this->elementos);
         return $string;
     }
 
