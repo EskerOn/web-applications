@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -36,7 +35,7 @@
               {
 
                 //..................................................................MC
-                $sql ="SELECT * FROM votos WHERE id_partido=6";
+                $sql ="SELECT * FROM votos WHERE id_partido='MC'";
                 $result= mysqli_query($link, $sql);
 
                 if(mysqli_num_rows($result)>0)
@@ -44,8 +43,8 @@
                   while($row= mysqli_fetch_assoc($result)){
                       $mc++;
                   }
-          
-                  $id_partido= 6;
+
+                  echo "Votos Moviento ciudadano: ".$mc."<br>";
 
                   //SE LLENA LA BARRA DE VOTOS
 
@@ -59,7 +58,7 @@
                 }
 
                 //....................................................................... MORENA
-                $sql ="SELECT * FROM votos WHERE  id_partido=7";
+                $sql ="SELECT * FROM votos WHERE id_partido='MORENA'";
                 $result= mysqli_query($link, $sql);
 
                 if(mysqli_num_rows($result)>0)
@@ -69,8 +68,8 @@
                       $morena++;
                   }
 
-
-                 $id_partido= 7;
+                 echo "Votos Morena: ".$morena."<br>";
+                
 
                   echo "
                   <div class='progress'>
@@ -82,7 +81,7 @@
                 }
 
                 // ............................................................................PAN
-                $sql ="SELECT * FROM votos WHERE id_partido=1";
+                $sql ="SELECT * FROM votos WHERE id_partido='PAN'";
                 $result= mysqli_query($link, $sql);
 
                 if(mysqli_num_rows($result)>0)
@@ -93,7 +92,7 @@
                       $pan++;
                   }
 
-                  $id_partido= 1;
+                   echo "Votos PAN: ".$pan."<br>";
 
                   echo "
                   <div class='progress'>
@@ -105,7 +104,7 @@
                 }
 
                 // ....................................................................PRD
-                $sql ="SELECT * FROM votos WHERE id_partido=3";
+                $sql ="SELECT * FROM votos WHERE id_partido='PRD'";
                 $result= mysqli_query($link, $sql);
 
                 if(mysqli_num_rows($result)>0)
@@ -115,7 +114,7 @@
                       $prd++;
                   }
 
-                  $id_partido= 3;
+               echo "Votos PRD: ".$prd."<br>";
 
               
                   echo "
@@ -129,7 +128,7 @@
 
 
                  // ............................................................................PRI
-                $sql ="SELECT * FROM votos WHERE id_partido=2";
+                 $sql ="SELECT * FROM votos WHERE id_partido='PRI'";
                 $result= mysqli_query($link, $sql);
 
                 if(mysqli_num_rows($result)>0)
@@ -138,8 +137,7 @@
                   {
                       $pri++;
                   }
-
-                  $id_partido= 2;
+                  echo "Votos PRI: ".$pri."<br>";
 
        
                   echo "
@@ -152,7 +150,8 @@
                 }
 
                 // ....................................................................PT
-                $sql ="SELECT * FROM votos WHERE id_partido=4";
+             
+               $sql ="SELECT * FROM votos WHERE id_partido='PT'";
                 $result= mysqli_query($link, $sql);
 
                 if(mysqli_num_rows($result)>0)
@@ -162,7 +161,7 @@
                       $pt++;
                   }
 
-                  $id_partido= 4;
+               echo "Votos PRD: ".$pt."<br>";
 
                   echo "
                   <div class='progress'>
@@ -175,22 +174,21 @@
 
 
                   // ............................................................................PVE
-                $sql ="SELECT * FROM votos WHERE id_partido=5";
+        
+                $sql ="SELECT * FROM votos WHERE id_partido='PVE'";
                 $result= mysqli_query($link, $sql);
 
                 if(mysqli_num_rows($result)>0)
                 {
                   while($row= mysqli_fetch_assoc($result))
                   {
-                    //if($row['voto_por'])
+                    
                       $pve++;
                   }
 
 
-                  //$partidoid=$_REQUEST['voto'];
-                  $id_partido= 5;
+                  echo "Votos Partido verde ".$pve."<br>";
 
-                  echo "<strong>Partido Verde</strong><br>";// APARECE NOMBRE DEL PARTIDO
                   echo "
                   <div class='progress'>
                     <div class='progress-bar progress-bar-info' role='progressbar' aria-valuenow=\"70\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$id_partido."%'>
@@ -201,27 +199,10 @@
                 }
 
                 // ..............TERMINAN LOS PARTIDOS .......
-                $Total = $prd + $pan + $pri + $morena + $pve + $pt;
+                $Total = $mc+ $prd + $pan + $pri + $morena + $pve + $pt;
 
 
-               echo "<hr>";// INICIAMOS CONTEO TOTAL DE VOTOS 
-
-                //$total=0;
-
-                // Total
-                //$sql ="SELECT * FROM votos";
-                //$result= mysqli_query($link, $sql);
-
-                //if(mysqli_num_rows($result)>0)
-                //{
-                  //while($row= mysqli_fetch_assoc($result))
-                  //{
-                    //if($row['id_partido'])
-                      //$total++;
-                  //}
-
-
-                  //$tptal= $total*10;
+               
 
                   echo "<strong>Número total de Votos</strong><br>";
                   echo "
