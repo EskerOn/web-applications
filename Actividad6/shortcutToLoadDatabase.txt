@@ -1,1 +1,1 @@
-source C:/Users/alexe/Documents/votosDB.sql;
+source C:/wamp/www/web-applications/Actividad6/votosDB.sql;

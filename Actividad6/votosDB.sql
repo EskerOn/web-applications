@@ -55,9 +55,3 @@ INSERT INTO partidos (nombre_partido, siglas, imagen) VALUES( 'Partido del Traba
 INSERT INTO partidos (nombre_partido, siglas, imagen) VALUES( 'Partido verde ecologista de Mexico', 'PVE', 'img/pve.png');
 INSERT INTO partidos (nombre_partido, siglas, imagen) VALUES( 'Movimiento Ciudadano', 'MC', 'img/mc.png');
 INSERT INTO partidos (nombre_partido, siglas, imagen) VALUES( 'Movimiento Regeneracion Nacional', 'Morena', 'img/morena.png');
-
-
--- Ejemploinsertar voto: INSERT INTO votos (fecha_eleccion, id_persona, id_partido) VALUES( '2018-01-01', 1, 1);
-
-
-
