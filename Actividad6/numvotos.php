@@ -60,9 +60,9 @@
                   while($row= mysqli_fetch_assoc($result)){
                       $mc++;
                   }
-
+                }
                   echo "Votos Moviento ciudadano: ".$mc."<br>";
-
+                        
                   //SE LLENA LA BARRA DE VOTOS
 
                   echo "
@@ -72,7 +72,7 @@
                     </div>
                   </div>
                   ";
-                }
+                
 
                 //....................................................................... MORENA
                 $sql ="SELECT * FROM votos WHERE id_partido=7";
@@ -84,7 +84,7 @@
                   {
                       $morena++;
                   }
-
+                }
                  echo "Votos Morena: ".$morena."<br>";
                 
 
@@ -95,7 +95,7 @@
                     </div>
                   </div>
                   ";
-                }
+                
 
                 // ............................................................................PAN
                 $sql ="SELECT * FROM votos WHERE id_partido=1";
@@ -108,7 +108,7 @@
                
                       $pan++;
                   }
-
+                }
                    echo "Votos PAN: ".$pan."<br>";
 
                   echo "
@@ -118,7 +118,7 @@
                     </div>
                   </div>
                   ";
-                }
+                
 
                 // ....................................................................PRD
                 $sql ="SELECT * FROM votos WHERE id_partido=3";
@@ -130,7 +130,7 @@
                   {
                       $prd++;
                   }
-
+                }
                echo "Votos PRD: ".$prd."<br>";
 
               
@@ -141,7 +141,7 @@
                     </div>
                   </div>
                   ";
-                }
+                
 
 
                  // ............................................................................PRI
@@ -154,6 +154,7 @@
                   {
                       $pri++;
                   }
+                }
                   echo "Votos PRI: ".$pri."<br>";
 
        
@@ -164,7 +165,7 @@
                     </div>
                   </div>
                   ";
-                }
+                
 
                 // ....................................................................PT
              
@@ -177,8 +178,8 @@
                   {
                       $pt++;
                   }
-
-               echo "Votos PRD: ".$pt."<br>";
+                }
+               echo "Votos PT: ".$pt."<br>";
 
                   echo "
                   <div class='progress'>
@@ -187,7 +188,7 @@
                     </div>
                   </div>
                   ";
-                }
+                
 
 
                   // ............................................................................PVE
@@ -202,7 +203,7 @@
                     
                       $pve++;
                   }
-
+                }
 
                   echo "Votos Partido verde ".$pve."<br>";
 
@@ -213,13 +214,13 @@
                     </div>
                   </div>
                   ";
-                }
+                
 
                 // ..............TERMINAN LOS PARTIDOS .......
                 //$Total = $mc+ $prd + $pan + $pri + $morena + $pve + $pt;
+                
 
-
-               
+                
 
                   echo "<strong>Número total de Votos</strong><br>";
                   echo "
@@ -227,6 +228,16 @@
                     <h3 class='normalFont'>Votos : $Total </h3>
                   </div>
                   ";
+                  echo "<form action='grafica.php' method='post'>";
+                  echo "<input type='hidden' name='pan' value=$pan'>";
+                  echo "<input type='hidden' name='prd' value=$prd'>";
+                  echo "<input type='hidden' name='pri' value=$pri>";
+                  echo "<input type='hidden' name='mc' value=$mc>";
+                  echo "<input type='hidden' name='morena' value=$morena>";
+                  echo "<input type='hidden' name='pve' value=$pve>";
+                  echo "<input type='hidden' name='pt' value=$pt>";
+                  echo "<input type='submit' name='Grafica' value='Exportar Grafica'>";
+                  echo "</form>";
                 //}
 
               }
