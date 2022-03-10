@@ -45,7 +45,7 @@
       </form>
       </div>
     <div id="content">
-      <h2>Bienvenidos a la videoteca</h2>
+      <h2>Bienvenido Administrador</h2>
       <p><img src="../Aplic2022/videoteca.JPG" width="191" height="148" /></p>
       <p>Esta p&aacute;gina es utilizadfa para la renta de peliculas recientes de nivel nacionale internacional, podr&aacute;s encontrar los titulos de mayor exito.</p>
       <p>Parra rentar debes estar registr</p>
