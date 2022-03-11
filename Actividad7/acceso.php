@@ -46,7 +46,15 @@
       </div>
     <div id="content">
       <h2>Usuario registrado   </h2>
-      <p>Aqui va el login </p>
+      <form action="validar.php" method="Post">
+      Usuario:
+      <input type="text" name="usuario" required>
+      <br><br>
+      Password:
+      <input type="password" name="passwd" required>
+      <br><br>
+      <input type="submit" name="enviar" value=" Entrar ">
+      </form>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>

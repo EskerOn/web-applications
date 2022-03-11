@@ -14,7 +14,9 @@
         <ul>
           <li><a href="indexADM.php"><span>Inicio</span></a></li>
           <li><a href="consultasADM.php"class="current"><span>Consultas</span></a></li>
-          <li><a href="altaBaja.php"><span>Alta/Baja/Actualizacion</span></a></li>
+          <li><a href="altas.php"><span>Altas</span></a></li>
+		  <li><a href="bajas.php"><span>Bajas</span></a></li>
+		  <li><a href="actualizacion.php"><span>Actualizacion</span></a></li>
           <li><a href="reportes.php"><span>Reportes</span></a></li>
           <li><a href="index.php"><span>Salir</span></a></li>
         </ul>

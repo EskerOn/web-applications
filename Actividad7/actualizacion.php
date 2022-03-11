@@ -14,7 +14,9 @@
         <ul>
           <li><a href="indexADM.php"><span>Inicio</span></a></li>
           <li><a href="consultasADM.php"><span>Consultas</span></a></li>
-          <li><a href="altaBaja.php"class="current"><span>Alta/Baja/Actualizacion</span></a></li>
+          <li><a href="altas.php"><span>Altas</span></a></li>
+		  <li><a href="bajas.php"><span>Bajas</span></a></li>
+		  <li><a href="actualizacion.php"class="current"><span>Actualizacion</span></a></li>
           <li><a href="reportes.php"><span>Reportes</span></a></li>
           <li><a href="index.php"><span>Salir</span></a></li>
         </ul>
@@ -45,44 +47,14 @@
       </form>
       </div>
     <div id="content">
-		<h2>Alta</h2>
-		<h2>Insertar nueva pelicula</h2>
-    <form action="Agregado.php" method="POST" enctype="multipart/form-data">
-    Titulo:
-    <input type="text" name="tit" required>
-    <br> <br>
-    Director:
-    <input type="text" name="dir" required>
-    <br><br>
-    Actor:
-    <input type="text" name="act" required>
-    <br><br>
-    Selecciona el ranking de la pelicula:
-    <select name="ran">
-        <option value="50">50</option>
-        <option value="55">55</option>
-        <option value="60">60</option>
-        <option value="65">65</option>
-        <option value="70" selected>70</option>
-        <option value="75">75</option>
-        <option value="80">80</option>
-        <option value="85">85</option>
-        <option value="90">90</option>
-        <option value="95">95</option>
-        <option value="100">100</option>
-    </select>
-    <br><br>
-    Imagen de la pelicula:
-    <input type="file" name="archivo">
-    <br><br>
-    <input type="submit" name="enviar" value="Enviar">
-    </form>
-	  <h2>Baja</h2>
-      <p>&nbsp;</p>
-	  <p>&nbsp;</p>
+
       <h2>Actualizacion</h2>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
+	        <p>&nbsp;</p>
+			      <p>&nbsp;</p>
+				        <p>&nbsp;</p>
+						
     </div>
   </div>
 </div>

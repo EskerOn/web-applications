@@ -4,6 +4,11 @@
 <title>Videoteca</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+<!--
+.Estilo1 {color: #FF0000}
+-->
+</style>
 </head>
 <body>
 <div id="wrap">
@@ -12,13 +17,11 @@
     <div id="menucontainer">
       <div id="menunav">
         <ul>
-          <li><a href="indexADM.php"class="current"><span>Inicio</span></a></li>
-          <li><a href="consultasADM.php"><span>Consultas</span></a></li>
-          <li><a href="altas.php"><span>Altas</span></a></li>
-		  <li><a href="bajas.php"><span>Bajas</span></a></li>
-		  <li><a href="actualizacion.php"><span>Actualizacion</span></a></li>
-          <li><a href="reportes.php"><span>Reportes</span></a></li>
-          <li><a href="index.php"><span>Salir</span></a></li>
+          <li><a href="index.php"><span>Inicio</span></a></li>
+          <li><a href="consultas.php"><span>Consultas</span></a></li>
+          <li><a href="registrarse.php" ><span>Resgistrarse</span></a></li>
+          <li><a href="acceso.php"class="current"><span>Acceso</span></a></li>
+          <li><a href="contacto.php"><span>Contacto</span></a></li>
         </ul>
       </div>
     </div>
@@ -47,11 +50,22 @@
       </form>
       </div>
     <div id="content">
-      <h2>Bienvenido Administrador</h2>
-      <p><img src="../Aplic2022/videoteca.JPG" width="191" height="148" /></p>
-      <p>Esta p&aacute;gina es utilizadfa para la renta de peliculas recientes de nivel nacionale internacional, podr&aacute;s encontrar los titulos de mayor exito.</p>
-      <p>Parra rentar debes estar registr</p>
-      <p>te invitamos a registrarte en a opci&ograve;n registrarse  </p>
+      <h2>Usuario registrado   </h2>
+      <form action="validar.php" method="Post">
+      Usuario:
+      <input type="text" name="usuario" required>
+      <br><br>
+      Password:
+      <input type="password" name="passwd" required>
+      <br>
+      <span class="Estilo1">password incorrecto</span>      <br>
+      <input type="submit" name="enviar" value=" Entrar ">
+      </form>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
     </div>
   </div>
 </div>
