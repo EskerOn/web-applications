@@ -59,7 +59,7 @@
       Password:
       <input type="password" name="passwd" required>
       <br><br>
-      <input type="submit" name="enviar" value=" Entrar ">
+      <input type="submit" name="enviar" value=" Registrar ">
       </form>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
