@@ -4,6 +4,11 @@
 <title>Videoteca</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+<!--
+.Estilo1 {color: #FF0000}
+-->
+</style>
 </head>
 <body>
 <div id="wrap">
@@ -43,7 +48,7 @@
         </div>
         </fieldset>
       </form>
-      </div>
+    </div>
     <div id="content">
 	  <h2>Registrar Usuario  </h2>
       <form action="registrouser.php" method="Post">
@@ -58,7 +63,8 @@
       <br><br>
       Password:
       <input type="password" name="passwd" required>
-      <br><br>
+      <br>
+      <span class="Estilo1">Usuario No disponible </span><br>
       <input type="submit" name="enviar" value=" Entrar ">
       </form>
       <p>&nbsp;</p>
