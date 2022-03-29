@@ -6,6 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 </head>
 <body>
+  <?php
+  session_start();
+  if (isset($_SESSION['kusuario'])){
+    if ($_SESSION['tuser']==1){
+      ;
+    }
+    else{
+      header("Location: index.php");
+    }
+  }
+  else{
+    header("Location: index.php");
+  }
+  ?>
 <div id="wrap">
   <div id="masthead">
     <h1>Videoteca</h1>
@@ -15,7 +29,8 @@
           <li><a href="indexCliente.php" class="current"><span>Inicio</span></a></li>
           <li><a href="consultasCliente.php"><span>Consultas</span></a></li>
           <li><a href="rentasCliente.php"><span>Rentas</span></a></li>
-          <li><a href="index.php"><span>Salir</span></a></li>
+          <li><a href="PeliculasRentadas.php"><span>Peliculas Rentadas</span></a></li>
+          <li><a href="salir.php"><span>Salir</span></a></li>
         </ul>
       </div>
     </div>
@@ -42,6 +57,7 @@
     </div>
     <div id="content">
       <h2>Bienvenido.</h2>
+      <p>Cliente:  <?php  echo($_SESSION['kusuario'] ) ?></p>
       <p>Gracias por registrarte en VIDEOTECA.</p>
       <p>Ahora   tienes acceso a nuestro catalogo de  peliculas recientes de nivel nacional e internacional, podras encontrar los titulos de mayor exito.</p>
       <p>Renta la pelicula que sea de tu agrado. </p>

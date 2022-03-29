@@ -66,7 +66,7 @@
 		  $im=$row['imagen'];
 	
 		  echo"<TR><TD>$id</TD><TD>$ti</TD><TD>$di</TD><TD>$ac</TD>
-			   <TD><A href='datosVideoteca2.php?id_peli=$id'>
+			   <TD>
 			   <img src='misImagenes/$im' width='80' height='80'/> </A>
 			   </TD> </TR>";  
 	   }

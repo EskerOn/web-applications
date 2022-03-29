@@ -6,6 +6,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 </head>
 <body>
+<?php
+  session_start();
+  if (isset($_SESSION['kusuario'])){
+    if ($_SESSION['tuser']==0){
+      ;
+    }
+    else{
+      header("Location: index.php");
+    }
+  }
+  else{
+    header("Location: index.php");
+  }
+  ?>
 <div id="wrap">
   <div id="masthead">
     <h1>Videoteca</h1>
@@ -18,7 +32,7 @@
 		  <li><a href="bajas.php"><span>Bajas</span></a></li>
 		  <li><a href="actualizacion.php"><span>Actualizacion</span></a></li>
           <li><a href="reportes.php"><span>Reportes</span></a></li>
-          <li><a href="index.php"><span>Salir</span></a></li>
+          <li><a href="salir.php"><span>Salir</span></a></li>
         </ul>
       </div>
     </div>
@@ -48,6 +62,7 @@
       </div>
     <div id="content">
       <h2>Bienvenido Administrador</h2>
+      <p>Cliente:  <?php  echo($_SESSION['kusuario'] ) ?></p>
       <p><img src="../Aplic2022/videoteca.JPG" width="191" height="148" /></p>
       <p>Esta p&aacute;gina es utilizadfa para la renta de peliculas recientes de nivel nacionale internacional, podr&aacute;s encontrar los titulos de mayor exito.</p>
       <p>Parra rentar debes estar registr</p>

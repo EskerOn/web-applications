@@ -6,16 +6,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 </head>
 <body>
+<?php session_start(); 
+if(isset($_SESSION['kusuario']))
+  {
+    if ($_SESSION['tuser']==1) ;
+	  else header("Location:index.php"); 
+  }
+else header("Location:index.php");  
+?>
 <div id="wrap">
   <div id="masthead">
     <h1>Videoteca</h1>
     <div id="menucontainer">
       <div id="menunav">
         <ul>
-          <li><a href="indexCliente.php"><span>Inicio</span></a></li>
-          <li><a href="consultasCliente.php"><span>Consultas</span></a></li>
-          <li><a href="rentasCliente.php" class="current" ><span>Rentas</span></a></li>
-          <li><a href="index.php"><span>Salir</span></a></li>
+        <li><a href="indexCliente.php" ><span>Inicio</span></a></li>
+          <li><a href="consultasCliente.php" ><span>Consultas</span></a></li>
+          <li><a href="rentas.php" class="current"><span>Rentas</span></a></li>
+          <li><a href="PeliculasRentadas.php"><span>Peliculas Rentadas</span></a></li>
+          <li><a href="salir.php"><span>Salir</span></a></li>
         </ul>
       </div>
     </div>
@@ -39,14 +48,31 @@
       <p>&nbsp;</p>
     </div>
     <div id="content">
-      <h2>Peliculas rentadas. </h2>
-      <p>Peliculas rentadas actualmente:</p>
-      <p> - Pelicula 1</p>
-      <p>- Pelicula 2</p>
-      <p>&nbsp;</p>
-      <p>Peliculas rentadas con anterioridad:</p>
-      <p>- Pelicula 1</p>
-      <p>- Pelicula 2     </p>
+    <h2>Renta pel&iacute;cula</h2>
+      <p>
+	  <?PHP
+      $link=mysqli_connect("localhost","root","");
+      mysqli_select_db($link,"videoteca");
+      $result=mysqli_query($link,"select * from pelicula");
+
+      echo '<form action="rentas2.php" method="POST">';
+      echo '<select name="pelicula">';
+      while ($row=mysqli_fetch_array($result))
+      {
+          $id=$row['id_pelicula'];
+          $ti=$row['titulo'];
+          echo "<option value='$id'> $ti"; 
+      }
+      echo "</select> <br><br>";
+      echo '<input type="submit" name="enviar" value=" Enviar ">';
+      echo "</form>";
+      mysqli_free_result($result); 
+      mysqli_close($link); 
+    ?>
+	  
+	  
+	  
+	  </p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
       <p>&nbsp;</p>
