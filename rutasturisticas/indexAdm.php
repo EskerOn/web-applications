@@ -13,6 +13,15 @@ Licence URI: http://www.os-templates.com/template-terms
 <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
 </head>
 <body id="top">
+<?php
+  session_start(); 
+  if(isset($_SESSION['usuario']))
+    {
+      if ($_SESSION['tuser']==0) ;
+      else header("Location:index.php"); 
+    }
+  else header("Location:index.php");  
+  ?>
 <div class="wrapper col1">
   <div id="head">
     <h1><a href="index.php">Rutas t&uacute;risticas </a></h1>

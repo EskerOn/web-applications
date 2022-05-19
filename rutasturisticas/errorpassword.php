@@ -8,7 +8,7 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Inicio</title>
+<title>Ingresar</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
 </head>
@@ -19,17 +19,10 @@ Licence URI: http://www.os-templates.com/template-terms
 
     <div id="topnav">
     <ul>
-        <li><a  href="indexUsuario.php">Inicio</a></li>
-        <li><a href="consultaUser.php">Consultar rutas</a></li>
-        <li><a href="#">Mis Rutas</a>
-          <ul>
-            <li><a href="creaRuta.php">Crear ruta</a></li>
-            <li><a href="modificaRutaUser.php">Modificar ruta</a></li>
-            <li><a href="eliminaRutaUser.php">Eliminar ruta</a></li>
-          </ul>
-        </li>
-        <li><a class="active" href="recoverPass.php">Recuperar contraseña</a></li>
-        <li><a  href="salir.php">salir</a></li>
+        <li><a href="index.php">Inicio</a></li>
+        <li><a href="consultaRutas.php">Consultar rutas</a></li>
+        <li><a  href="registrarse.php">Registarse</a></li>
+		    <li><a class="active" href="iniciarSesion.php">Iniciar sesion</a></li>
       </ul>
     </div>
     <div id="search">
@@ -50,8 +43,17 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-    <h1>Aqui puedes recuperar tu contraseña</h1>
-
+  <h2>Usuario registrado   </h2>
+      <form action="validar.php" method="Post">
+      Usuario:
+      <input type="text" name="usuario" required>
+      <br><br>
+      Password:
+      <input type="password" name="passwd" required>
+      <br><br>
+      <span style="color: #FF0000">Contraseña incorrecta</span> <br>
+      <input type="submit" name="enviar" value=" Entrar ">
+      </form>
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>

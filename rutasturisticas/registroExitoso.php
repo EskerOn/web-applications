@@ -8,37 +8,21 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Inicio</title>
+<title>Registro</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
 </head>
 <body id="top">
-<?php
-  session_start(); 
-  if(isset($_SESSION['usuario']))
-    {
-      if ($_SESSION['tuser']==1) ;
-      else header("Location:index.php"); 
-    }
-  else header("Location:index.php");  
-  ?>
 <div class="wrapper col1">
   <div id="head">
     <h1><a href="index.php">Rutas t&uacute;risticas </a></h1>
 
     <div id="topnav">
     <ul>
-        <li><a  href="indexUsuario.php">Inicio</a></li>
-        <li><a href="consultaUser.php">Consultar rutas</a></li>
-        <li><a class="active" href="#">Mis Rutas</a>
-          <ul>
-            <li><a href="creaRuta.php">Crear ruta</a></li>
-            <li><a href="modificaRutaUser.php">Modificar ruta</a></li>
-            <li><a href="eliminaRutaUser.php">Eliminar ruta</a></li>
-          </ul>
-        </li>
-        <li><a  href="perfil.php">Mi Perfil</a></li>
-        <li><a  href="salir.php">salir</a></li>
+        <li><a  href="index.php">Inicio</a></li>
+        <li><a href="consultaRutas.php">Consultar rutas</a></li>
+        <li><a class="active" href="registrarse.php">Registarse</a></li>
+		    <li><a  href="iniciarSesion.php">Iniciar sesion</a></li>
       </ul>
     </div>
     <div id="search">
@@ -59,20 +43,34 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-  <h1>Elimina ruta </h1>
+    <h1>Registro</h1>
 
-<p>Selecciona una ruta para eliminarla</p>
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+      <form action="registrouser.php" method="Post">
+      Nombre:
+      <input type="text" name="nombre" required>
+      <br><br>
+	    Usuario:
+      <input type="text" name="usuario" required>
+      <br><br>
+      Password:
+      <input type="password" name="passwd" required>
+      <br><br>
+      Correo:
+      <input type="text" name="mail" required>
+      <br><br>
+      <span class="Estilo1">Registro exitoso</span> <br>
+      <input type="submit" name="enviar" value=" Registrar ">
+      </form>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
   </div>
 </div>
 <div class="wrapper col5">

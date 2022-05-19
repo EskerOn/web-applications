@@ -49,14 +49,14 @@ Licence URI: http://www.os-templates.com/template-terms
       Nombre:
       <input type="text" name="nombre" required>
       <br><br>
-	  Usuario:
+	    Usuario:
       <input type="text" name="usuario" required>
-      <br><br>
-	  A&ntildeo nacimiento:
-      <input type="text" name="year" required>
       <br><br>
       Password:
       <input type="password" name="passwd" required>
+      <br><br>
+      Correo:
+      <input type="text" name="mail" required>
       <br><br>
       <input type="submit" name="enviar" value=" Registrar ">
       </form>

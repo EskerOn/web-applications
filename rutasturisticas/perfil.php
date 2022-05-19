@@ -30,14 +30,14 @@ Licence URI: http://www.os-templates.com/template-terms
     <ul>
         <li><a  href="indexUsuario.php">Inicio</a></li>
         <li><a href="consultaUser.php">Consultar rutas</a></li>
-        <li><a class="active" href="#">Mis Rutas</a>
+        <li><a href="#">Mis Rutas</a>
           <ul>
             <li><a href="creaRuta.php">Crear ruta</a></li>
             <li><a href="modificaRutaUser.php">Modificar ruta</a></li>
             <li><a href="eliminaRutaUser.php">Eliminar ruta</a></li>
           </ul>
         </li>
-        <li><a  href="perfil.php">Mi Perfil</a></li>
+        <li><a class="active"  href="perfil.php">Mi Perfil</a></li>
         <li><a  href="salir.php">salir</a></li>
       </ul>
     </div>
@@ -59,20 +59,66 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-  <h1>Elimina ruta </h1>
+    <h1>Aqui puedes actualizar tu informacion personal</h1>
+    
+    Usuario: <?php echo $_SESSION['usuario']; ?>
+    <br>
+    <br>
 
-<p>Selecciona una ruta para eliminarla</p>
+    <h2>Cambiar dirección de correo electronico</h2>
+    <form action="cambiarCorreo.php" method="post">
+      <p>
+        <label>Correo electronico:</label>
+        <?php
+        $usu=$_SESSION['usuario'];
+        echo "<input type='hidden' name='usuario' value='$usu'>";
+        $link=mysqli_connect("localhost","root","");
+        mysqli_select_db($link,"rutasturisticas");
+        $result=mysqli_query($link,"select email from usuarios where username='$usu'");
+        if ($row=mysqli_fetch_array($result)){
+            echo $row['email']."<br>";
+        }
+        ?>
+        <br>
+        <label>Correo electronico nuevo:</label>
+        <input type="text" name="correo" id="correo" />
+      </p>
+      <p>
+        <input type="submit" name="submit" id="submit" value="Enviar" />
+      </p>
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+      </form>
+
+    <h2>Cambiar contraseña</h2>
+    <form action="cambiarPass.php" method="post">
+      <p>
+        <?php
+        $usu=$_SESSION['usuario'];
+        echo "<input type='hidden' name='usuario' value='$usu'>";
+        ?>
+        <label>Contraseña anterior:</label>
+        <input type="password" name="pass" id="pass" />
+      </p>
+      <p>
+        <label>Contraseña nueva:</label>
+        <input type="password" name="pass1" id="pass1" />
+      </p>
+      <p>
+        <input type="submit" name="submit" id="submit" value="Enviar" />
+      </p>
+    </form>
+
+
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
   </div>
 </div>
 <div class="wrapper col5">

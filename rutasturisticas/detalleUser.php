@@ -59,40 +59,66 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-  <h1>Consulta rutas túrisitcas</h1>
-    
-    <p>Listas creadas por usuarios</p>
     <?PHP
+	  $link=mysqli_connect("localhost","root","");
+    mysqli_select_db($link,"rutasturisticas");
+    $rutaid=$_GET['id_ruta'];
+    $result=mysqli_query($link,"SELECT * FROM rutas WHERE id_ruta='$rutaid'");
+    $result2=mysqli_query($link,"SELECT * FROM rutapunto WHERE id_ruta='$rutaid'");
 
-	   $link=mysqli_connect("localhost","root","");
-     mysqli_select_db($link,"rutasturisticas");
-
-
-	   $result=mysqli_query($link,"SELECT * FROM rutas");
-	
-	   echo "<table border='1'>";
-	   echo "<TR><TD> Nombre </TD>
-			 <TD> Autor </TD><TD>Descripción</TD><TD> Imagen </TD> <TD> Calificación </TD> </TR>";
-	
-	   while ($row=mysqli_fetch_array($result))
+    while ($row=mysqli_fetch_array($result))
 	   {
 		  $id=$row['id_ruta'];
 		  $nombre=utf8_encode($row['nombre']);
 		  $autor=$row['autor'];
-      $result2=mysqli_query($link,"SELECT * FROM usuarios WHERE id_user='$autor'");
-      $row2=mysqli_fetch_array($result2);
-      $username=utf8_encode($row2['username']);
+      $result3=mysqli_query($link,"SELECT * FROM usuarios WHERE id_user='$autor'");
+      $row3=mysqli_fetch_array($result3);
+      $username=utf8_encode($row3['username']);
 		  $desc=utf8_encode($row['descripcion']);
 		  $im=$row['imagen'];
       $cal=$row['calificacion'];
+      echo "<h1>$nombre</h1>";
+      echo "<form action='calificaRuta.php' method='post'>";
+      echo "<input type='hidden' name='id_ruta' value='$id'>";
+      echo "<SELECT NAME='calificacion'>";
+      echo "<OPTION VALUE='10'>10</OPTION>";
+      echo "<OPTION VALUE='20'>20</OPTION>";
+      echo "<OPTION VALUE='30'>30</OPTION>";
+      echo "<OPTION VALUE='40'>40</OPTION>";
+      echo "<OPTION VALUE='50'>50</OPTION>";
+      echo "<OPTION VALUE='60'>60</OPTION>";
+      echo "<OPTION VALUE='70'>70</OPTION>";
+      echo "<OPTION VALUE='80'>80</OPTION>";
+      echo "<OPTION VALUE='90'>90</OPTION>";
+      echo "<OPTION VALUE='100'>100</OPTION>";
+      echo "</SELECT>";
+      echo "<input type='submit' value='Calificar'>";
+      echo "</form>";
+      echo "<p>Autor: $username</p>";
+      echo "<p>Calificación: $cal</p>";
+      echo "<p>Descripción: $desc</p>";
+      echo "<img src='img/$im' width='300' height='300'/>";
+	   }
+     echo "<br><br><h1>Puntos de la ruta</h1>";
 	
-		  echo"<TR><TD>$nombre</TD><TD>$username</TD><TD>$desc</TD>
+	   echo "<table border='1'>";
+	   echo "<TR><TD> Nombre </TD>
+			 <TD>Descripción</TD><TD> Imagen </TD> </TR>";
+	
+	   while ($row=mysqli_fetch_array($result2))
+	   {
+		  $idpunto=$row['id_punto'];
+      $result3=mysqli_query($link,"SELECT * FROM puntos WHERE id_punto='$idpunto'");
+      $row3=mysqli_fetch_array($result3);
+      $puntonombre=utf8_encode($row3['nombre']);
+      $puntosdesc=utf8_encode($row3['descripcion']);
+      $puntosim=$row3['imagen'];
+
+	
+		  echo"<TR><TD>$puntonombre</TD><TD>$puntosdesc</TD>
 			   <TD>
-         <a href=detalleUser.php?id_ruta=$id>
-			   <img src='img/$im' width='150' height='150'/>
-         </a>
+			   <img src='img/$puntosim' width='150' height='150'/> </A>
 			   </TD> 
-         <TD>$cal</TD>
          </TR>";  
 	   }
 	   mysqli_free_result($result); 

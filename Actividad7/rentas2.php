@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 </head>
 <body>
-<?php session_start(); 
+<?php 
+session_start(); 
 if(isset($_SESSION['kusuario']))
   {
       if ($_SESSION['tuser']==1) ;

@@ -30,14 +30,14 @@ Licence URI: http://www.os-templates.com/template-terms
     <ul>
         <li><a  href="indexUsuario.php">Inicio</a></li>
         <li><a href="consultaUser.php">Consultar rutas</a></li>
-        <li><a class="active" href="#">Mis Rutas</a>
+        <li><a href="#">Mis Rutas</a>
           <ul>
             <li><a href="creaRuta.php">Crear ruta</a></li>
             <li><a href="modificaRutaUser.php">Modificar ruta</a></li>
             <li><a href="eliminaRutaUser.php">Eliminar ruta</a></li>
           </ul>
         </li>
-        <li><a  href="perfil.php">Mi Perfil</a></li>
+        <li><a class="active"  href="perfil.php">Mi Perfil</a></li>
         <li><a  href="salir.php">salir</a></li>
       </ul>
     </div>
@@ -59,20 +59,25 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-  <h1>Elimina ruta </h1>
+    <h1>Aqui puedes actualizar tu informacion personal</h1>
+    
+    Usuario: <?php echo $_SESSION['usuario']; ?>
+    <br>
+    <br>
 
-<p>Selecciona una ruta para eliminarla</p>
+    <h2>Correo actualizado con exito</h2>
 
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
   </div>
 </div>
 <div class="wrapper col5">
