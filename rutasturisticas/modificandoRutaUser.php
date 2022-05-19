@@ -59,43 +59,20 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-    <?php
-    $punto = $_REQUEST['punto'];
-    $nombre = $_REQUEST['nombre'];
-    $descripcion = $_REQUEST['descripcion'];
-    $imagen = $_REQUEST['imagen'];
-    $usuario = $_SESSION['ID'];
-    $rutaid = $_REQUEST['rutaid'];
+  <h1>Modifica ruta </h1>
+<?PHP
+  $link=mysqli_connect("localhost","root","");
+  mysqli_select_db($link,"rutasturisticas");
+  $rutaid=$_GET['id_ruta'];
 
-    $link = mysqli_connect("localhost", "root", "");
-    mysqli_select_db($link, "rutasturisticas");
-
-    if ($rutaid==0){
-      $sql = "insert into rutas(nombre, autor, descripcion, imagen, calificacion) values ('$nombre', '$usuario', '$descripcion', '$imagen', 0)";
-      $result = mysqli_query($link, $sql);
-      if (!$result) {
-        echo "Error: " . $sql . "<br>" . mysqli_error($link);
-      }
-      $rutaid = mysqli_insert_id($link);
-    }
-    $sql = "insert into rutapunto(id_ruta, id_punto) values ($rutaid, $punto)";
-
-    mysqli_query($link, $sql);
-
-
-    echo "<h2>Puntos de la ruta:</h2>";
-    $result=mysqli_query($link,"SELECT * FROM rutapunto WHERE id_ruta='$rutaid'");
-    while($row = mysqli_fetch_array($result)){
-      $punto = $row['id_punto'];
-      $result2=mysqli_query($link,"SELECT * FROM puntos WHERE id_punto='$punto'");
-      while($row2 = mysqli_fetch_array($result2)){
-        echo "<p>Punto: ".$row2['nombre']."</p>";
-      }
-    }
-
-    echo "<p>Agregar Puntos</p>";
-
-    echo "<select name='punto'>";
+  $usuario = $_SESSION['ID'];
+  $link=mysqli_connect("localhost","root","");
+  mysqli_select_db($link,"rutasturisticas");
+  echo "Agregar puntos";
+  echo "<br>";
+  echo "<br>";
+  echo "<form action='agregaPuntos.php' method='post'>";
+      echo "<select name='punto'>";
       $link=mysqli_connect("localhost","root","");
       mysqli_select_db($link,"rutasturisticas");
       $result=mysqli_query($link,"SELECT * FROM puntos");
@@ -113,31 +90,55 @@ Licence URI: http://www.os-templates.com/template-terms
         
       }
       echo "</select>";
-    echo "<br>";
-    echo "<br>";
-    echo "<input type='hidden' name='nombre' value='".$nombre."'>";
-    echo "<input type='hidden' name='descripcion' value='".$descripcion."'>";
-    echo "<input type='hidden' name='imagen' value='".$imagen."'>";
-    echo "<input type='hidden' name='rutaid' value='".$rutaid."'>";
-    echo "<input type='submit' value='Agregar'>";
-    echo "</form>";
-    echo "<br>";
-    echo "<br>";
-    ?>
-    <form action="indexUsuario.php">
-    <input type="submit" value="Listo" />
-    </form>  
-   
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
+
+
+  echo "<input type='hidden' name='nombre' value=''>";
+  echo "<input type='hidden' name='descripcion' value=''>";
+  echo "<input type='hidden' name='imagen' value=''>";
+  echo "<input type='hidden' name='rutaid' value='$rutaid'>";
+  echo "<input type='submit' value='Agregar'>";
+  echo "</form>";
+  echo "<br>";
+  echo "<br>";
+
+
+  echo "Quitar puntos";
+  echo "<br>";
+  echo "<br>";
+  echo "<form action='quitaPuntos.php' method='post'>";
+      echo "<select name='punto'>";
+      $result=mysqli_query($link,"SELECT * FROM rutapunto WHERE id_ruta=$rutaid");
+      while($row=mysqli_fetch_array($result)){
+        $result2=mysqli_query($link,"SELECT * FROM puntos WHERE id_punto=$row[id_punto]");
+        $row2=mysqli_fetch_array($result2);
+        echo "<option value='$row2[id_punto]'>".utf8_encode($row2['nombre'])."</option>";
+      }
+      #mostrar los puntosque no estan en la ruta
+
+  echo "<input type='hidden' name='rutaid' value='$rutaid'>";
+
+  echo "<input type='submit' value='Quitar Puntos'>";
+  echo "</form>";
+  echo "<br>";
+  echo "<br>";
+  echo "Modificar informacion";
+  echo "<form action='modificaInfo.php' method='post'>";
+  echo "<input type='hidden' name='rutaid' value='$rutaid'>";
+  echo "<br>";
+  echo "<input type='submit' value='Modificar Informacion'>";
+  echo "</form>";
+
+?>    
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
   </div>
 </div>
 <div class="wrapper col5">

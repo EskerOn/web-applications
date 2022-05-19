@@ -61,28 +61,15 @@ Licence URI: http://www.os-templates.com/template-terms
   <div id="container">
     <?php
     $punto = $_REQUEST['punto'];
-    $nombre = $_REQUEST['nombre'];
-    $descripcion = $_REQUEST['descripcion'];
-    $imagen = $_REQUEST['imagen'];
     $usuario = $_SESSION['ID'];
     $rutaid = $_REQUEST['rutaid'];
 
+
+
     $link = mysqli_connect("localhost", "root", "");
     mysqli_select_db($link, "rutasturisticas");
-
-    if ($rutaid==0){
-      $sql = "insert into rutas(nombre, autor, descripcion, imagen, calificacion) values ('$nombre', '$usuario', '$descripcion', '$imagen', 0)";
-      $result = mysqli_query($link, $sql);
-      if (!$result) {
-        echo "Error: " . $sql . "<br>" . mysqli_error($link);
-      }
-      $rutaid = mysqli_insert_id($link);
-    }
-    $sql = "insert into rutapunto(id_ruta, id_punto) values ($rutaid, $punto)";
-
-    mysqli_query($link, $sql);
-
-
+    $sql = "delete from rutapunto where id_ruta = '$rutaid' and id_punto = '$punto'";
+    $result = mysqli_query($link, $sql);
     echo "<h2>Puntos de la ruta:</h2>";
     $result=mysqli_query($link,"SELECT * FROM rutapunto WHERE id_ruta='$rutaid'");
     while($row = mysqli_fetch_array($result)){
@@ -92,39 +79,25 @@ Licence URI: http://www.os-templates.com/template-terms
         echo "<p>Punto: ".$row2['nombre']."</p>";
       }
     }
-
-    echo "<p>Agregar Puntos</p>";
-
+    echo "<h2>quitar puntos:</h2>";
+    
+    echo "<form action='quitaPuntos.php' method='post'>";
     echo "<select name='punto'>";
-      $link=mysqli_connect("localhost","root","");
-      mysqli_select_db($link,"rutasturisticas");
-      $result=mysqli_query($link,"SELECT * FROM puntos");
-      #mostrar los puntosque no estan en la ruta
-      while($row=mysqli_fetch_array($result)){
-        $result2=mysqli_query($link,"SELECT * FROM rutapunto WHERE id_ruta=$rutaid AND id_punto=$row[id_punto]");
-        if(mysqli_num_rows($result2)==0){
-          echo "<option value='$row[id_punto]'>".utf8_encode($row['nombre'])."</option>";
-        }
-        else{
-          $row2=mysqli_fetch_array($result2);
-          echo "<option value='$row[id_punto]' disabled>".utf8_encode($row['nombre'])."</option>";
-        }
+    $result=mysqli_query($link,"SELECT * FROM rutapunto WHERE id_ruta=$rutaid");
+    while($row=mysqli_fetch_array($result)){
+      $result2=mysqli_query($link,"SELECT * FROM puntos WHERE id_punto=$row[id_punto]");
+      $row2=mysqli_fetch_array($result2);
+      echo "<option value='$row2[id_punto]'>".utf8_encode($row2['nombre'])."</option>";
+    }
+    #mostrar los puntosque no estan en la ruta
 
-        
-      }
-      echo "</select>";
-    echo "<br>";
-    echo "<br>";
-    echo "<input type='hidden' name='nombre' value='".$nombre."'>";
-    echo "<input type='hidden' name='descripcion' value='".$descripcion."'>";
-    echo "<input type='hidden' name='imagen' value='".$imagen."'>";
-    echo "<input type='hidden' name='rutaid' value='".$rutaid."'>";
-    echo "<input type='submit' value='Agregar'>";
+    echo "<input type='hidden' name='rutaid' value='$rutaid'>";
+
+    echo "<input type='submit' value='Quitar Puntos'>";
     echo "</form>";
-    echo "<br>";
-    echo "<br>";
+
     ?>
-    <form action="indexUsuario.php">
+     <form action="indexUsuario.php">
     <input type="submit" value="Listo" />
     </form>  
    
