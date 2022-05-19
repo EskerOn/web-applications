@@ -62,7 +62,12 @@ Licence URI: http://www.os-templates.com/template-terms
     <h1>Bienvenido usuario</h1>
 
     <p>Ahora puedes crear, modificar y eliminar tus propias rutas, así como comentar  las de otros usuarios</p>
-
+    <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+    <p>&nbsp;</p>
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>
     <p>&nbsp;</p>

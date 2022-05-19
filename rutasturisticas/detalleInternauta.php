@@ -13,15 +13,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
 </head>
 <body id="top">
-  <?php
-  session_start(); 
-  if(isset($_SESSION['usuario']))
-    {
-      if ($_SESSION['tuser']==1) ;
-      else header("Location:index.php"); 
-    }
-  else header("Location:index.php");  
-  ?>
+
 <div class="wrapper col1">
   <div id="head">
     <h1><a href="index.php">Rutas t&uacute;risticas </a></h1>
@@ -98,10 +90,31 @@ Licence URI: http://www.os-templates.com/template-terms
 			   </TD> 
          </TR>";  
 	   }
-	   mysqli_free_result($result); 
-	   mysqli_close($link); 
+
 	   echo"</table>";
+
+
+     echo "<br><br><h1>Comentarios</h1>";
+     echo"<table border='1'>";
+      echo"<TR><TD> Usuario </TD> <TD>Comentario</TD></TR>";
+
+     $result = mysqli_query($link,"SELECT * FROM comentarios WHERE ruta='$rutaid'");
+      while ($row=mysqli_fetch_array($result))
+      {
+        $idcomentario=$row['id_comentario'];
+        $iduser=$row['autor'];
+        $result2=mysqli_query($link,"SELECT * FROM usuarios WHERE id_user='$iduser'");
+        $row2=mysqli_fetch_array($result2);
+        $username=utf8_encode($row2['username']);
+        $comentario=utf8_encode($row['comentario']);
+        echo"<TR><TD>$username</TD><TD>$comentario</TD> </TR>";
+
+        #echo "<p>$username</p>";
+        #echo "<p>$comentario</p>";
+      }
+      echo"</table>";
 	?>    
+  <h2>Registrate para comentar</h2>
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>

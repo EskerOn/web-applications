@@ -17,7 +17,7 @@ Licence URI: http://www.os-templates.com/template-terms
   session_start(); 
   if(isset($_SESSION['usuario']))
     {
-      if ($_SESSION['tuser']==1) ;
+      if ($_SESSION['tuser']==0) ;
       else header("Location:index.php"); 
     }
   else header("Location:index.php");  
@@ -27,17 +27,9 @@ Licence URI: http://www.os-templates.com/template-terms
     <h1><a href="index.php">Rutas t&uacute;risticas </a></h1>
 
     <div id="topnav">
-    <ul>
-        <li><a  href="indexUsuario.php">Inicio</a></li>
-        <li><a href="consultaUser.php">Consultar rutas</a></li>
-        <li><a class="active" href="#">Mis Rutas</a>
-          <ul>
-            <li><a href="creaRuta.php">Crear ruta</a></li>
-            <li><a href="modificaRutaUser.php">Modificar ruta</a></li>
-            <li><a href="eliminaRutaUser.php">Eliminar ruta</a></li>
-          </ul>
-        </li>
-        <li><a  href="perfil.php">Mi Perfil</a></li>
+      <ul>
+        <li><a href="indexAdm.php">Inicio</a></li>
+        <li><a class="active" href="consultaRutasAdm.php">Rutas</a></li>
         <li><a  href="salir.php">salir</a></li>
       </ul>
     </div>
@@ -63,7 +55,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <?PHP
     $link=mysqli_connect("localhost","root","");
     mysqli_select_db($link,"rutasturisticas");
-    $rutaid=$_GET['id_ruta'];
+    $rutaid=$_REQUEST['id_ruta'];
     $slq = "delete from rutas where id_ruta='$rutaid'";
     $result = mysqli_query($link,$slq);
     if($result){
@@ -77,18 +69,17 @@ Licence URI: http://www.os-templates.com/template-terms
     }else{
       echo "Error al eliminar la ruta";
     }
-	?>    
-
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+	?>  
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
   </div>
 </div>
 <div class="wrapper col5">

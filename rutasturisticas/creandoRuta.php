@@ -67,7 +67,7 @@ Licence URI: http://www.os-templates.com/template-terms
     $im=$_FILES['archivo']['name'];
     $path = "img/".$im;
     copy($_FILES['archivo']['tmp_name'], $path);
-    $imagen = $path;
+
 
 
     if ($ruta1==0){

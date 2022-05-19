@@ -13,11 +13,11 @@ Licence URI: http://www.os-templates.com/template-terms
 <link rel="stylesheet" href="./styles/layout.css" type="text/css" />
 </head>
 <body id="top">
-  <?php
+<?php
   session_start(); 
   if(isset($_SESSION['usuario']))
     {
-      if ($_SESSION['tuser']==1) ;
+      if ($_SESSION['tuser']==0) ;
       else header("Location:index.php"); 
     }
   else header("Location:index.php");  
@@ -27,17 +27,9 @@ Licence URI: http://www.os-templates.com/template-terms
     <h1><a href="index.php">Rutas t&uacute;risticas </a></h1>
 
     <div id="topnav">
-    <ul>
-        <li><a href="indexUsuario.php">Inicio</a></li>
-        <li><a class="active" href="consultaUser.php">Consultar rutas</a></li>
-        <li><a href="#">Mis Rutas</a>
-          <ul>
-            <li><a href="creaRuta.php">Crear ruta</a></li>
-            <li><a href="modificaRutaUser.php">Modificar ruta</a></li>
-            <li><a href="eliminaRutaUser.php">Eliminar ruta</a></li>
-          </ul>
-        </li>
-        <li><a  href="perfil.php">Mi Perfil</a></li>
+      <ul>
+        <li><a href="indexAdm.php">Inicio</a></li>
+        <li><a class="active" href="consultaRutasAdm.php">Rutas</a></li>
         <li><a  href="salir.php">salir</a></li>
       </ul>
     </div>
@@ -59,7 +51,7 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-    <?PHP
+  <?PHP
 	  $link=mysqli_connect("localhost","root","");
     mysqli_select_db($link,"rutasturisticas");
     $rutaid=$_GET['id_ruta'];
@@ -94,6 +86,13 @@ Licence URI: http://www.os-templates.com/template-terms
       echo "</SELECT>";
       echo "<input type='submit' value='Calificar'>";
       echo "</form>";
+      
+      echo "<form action='eliminaAdm.php' method='post'>";
+      echo "<input type='hidden' name='id_ruta' value='$id'>";
+      echo "<br>";
+      echo "<input type='submit' value='Eliminar'>";
+      echo "</form>";
+
       echo "<p>Autor: $username</p>";
       echo "<p>Calificación: $cal</p>";
       echo "<p>Descripción: $desc</p>";
@@ -121,8 +120,8 @@ Licence URI: http://www.os-templates.com/template-terms
 			   </TD> 
          </TR>";  
 	   }
-	   echo"</table>";
 
+	   echo"</table>";
      echo "<br><br><h1>Comentarios</h1>";
      echo"<table border='1'>";
       echo"<TR><TD> Usuario </TD> <TD>Comentario</TD></TR>";
@@ -152,7 +151,6 @@ Licence URI: http://www.os-templates.com/template-terms
       echo "</form>";
       mysqli_free_result($result);
       mysqli_close($link);
-
 	?>    
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>

@@ -74,39 +74,9 @@ Licence URI: http://www.os-templates.com/template-terms
     <input type="text" name="descripcion" size="150" required>
     <br>
     <br>
-    Opcional 
-    <br>
-    Combinar:
-    <br>
-    <br>
-    <select name="ruta1">
-    <option selected="0"></option>
-    <?php
-    $link=mysqli_connect("localhost","root","");
-    mysqli_select_db($link,"rutasturisticas");
+<input type='hidden' name='ruta1' value='0'>
+<input type='hidden' name='ruta2' value='0'>
 
-
-    $result=mysqli_query($link,"SELECT * FROM rutas");
-    while($row=mysqli_fetch_array($result))
-    {
-      echo "<option value='".$row['id_ruta']."'>".utf8_encode($row['nombre'])."</option>";
-    }
-    echo "</select>";
-    echo "<br>";
-    echo "<br>";
-    echo "con:";
-    echo "<br>";
-    echo "<br>";
-    echo "<select name='ruta2'>";
-    echo "<option selected='0'></option>";
-    $result=mysqli_query($link,"SELECT * FROM rutas");
-    while($row=mysqli_fetch_array($result))
-    {
-      echo "<option value='".$row['id_ruta']."'>".utf8_encode($row['nombre'])."</option>";
-    }
-    echo "</select>";
-
-    ?>
 
     <br>
     <br>

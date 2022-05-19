@@ -59,9 +59,22 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-    <h1>Crea tu ruta </h1>
-
-    <p>Aqui puedes crear tu ruta</p>
+    <p>Crear Punto</p>
+    <form action="registraPunto.php" method="POST" enctype="multipart/form-data" accept-charset="utf-8">
+    Nombre del punto:
+    <input type="text" name="nombre" size="50" required>
+    <br>
+    <br>
+    Descripcion:
+    <br>
+    <br>
+    <input type="text" name="descripcion" size="150" required>
+    <br>
+    <br>
+    Imagen:
+    <input type="file" name="archivo">
+    <br><br>
+    <input type="submit" value="Crear Punto">
 
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>

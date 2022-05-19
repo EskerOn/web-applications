@@ -54,13 +54,43 @@ Licence URI: http://www.os-templates.com/template-terms
   <h1>Administra rutas túrisitcas</h1>
 
   <p>Listas creadas por usuarios</p>
-  <ul>
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-    <li>Etiam vel sapien et est adipiscing commodo.</li>
-    <li>Duis pharetra eleifend sapien, id faucibus dolor rutrum et.</li>
-    <li>Donec et dui dolor, in lacinia leo.</li>
-    <li>Mauris posuere tellus ac purus adipiscing dapibus.</li>
-  </ul>
+    <?PHP
+
+	   $link=mysqli_connect("localhost","root","");
+     mysqli_select_db($link,"rutasturisticas");
+
+
+	   $result=mysqli_query($link,"SELECT * FROM rutas");
+	
+	   echo "<table border='1'>";
+	   echo "<TR><TD> Nombre </TD>
+			 <TD> Autor </TD><TD>Descripción</TD><TD> Imagen </TD> <TD> Calificación </TD> </TR>";
+	
+	   while ($row=mysqli_fetch_array($result))
+	   {
+		  $id=$row['id_ruta'];
+		  $nombre=utf8_encode($row['nombre']);
+		  $autor=$row['autor'];
+      $result2=mysqli_query($link,"SELECT * FROM usuarios WHERE id_user='$autor'");
+      $row2=mysqli_fetch_array($result2);
+      $username=utf8_encode($row2['username']);
+		  $desc=utf8_encode($row['descripcion']);
+		  $im=$row['imagen'];
+      $cal=$row['calificacion'];
+	
+		  echo"<TR><TD>$nombre</TD><TD>$username</TD><TD>$desc</TD>
+			   <TD>
+         <a href=detalleAdm.php?id_ruta=$id>
+			   <img src='img/$im' width='150' height='150'/>
+         </a>
+			   </TD> 
+         <TD>$cal</TD>
+         </TR>";  
+	   }
+	   mysqli_free_result($result); 
+	   mysqli_close($link); 
+	   echo"</table>";
+	?>    
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>
