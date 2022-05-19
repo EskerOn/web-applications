@@ -59,58 +59,63 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-  <h1>Modifica ruta </h1>
+    <?php
+    $ruta1 = $_REQUEST['ruta1'];
+    $ruta2 = $_REQUEST['ruta2'];
+    $nombre = $_REQUEST['nombre'];
+    $descripcion = $_REQUEST['descripcion'];
+    $im=$_FILES['archivo']['name'];
+    $path = "img/".$im;
+    copy($_FILES['archivo']['tmp_name'], $path);
+    $imagen = $path;
 
-  <p>Selecciona una ruta para modificarla</p>
+
+    if ($ruta1==0){
+      echo "<h2>Ruta: $nombre </h2>";
+      echo "<p>Descripcion: $descripcion </p>";
+
+      echo "<p>Agregar Puntos</p>";
+
+      echo "<form action='agregaPuntos.php' method='post'>";
+      echo "<select name='punto'>";
+      $link=mysqli_connect("localhost","root","");
+      mysqli_select_db($link,"rutasturisticas");
+      $result=mysqli_query($link,"SELECT * FROM puntos");
+      while($row=mysqli_fetch_array($result)){
+        echo "<option value='".$row['id_punto']."'>".utf8_encode($row['nombre'])."</option>";
+      }
+      echo "</select>";
+      echo "<br>";
+      echo "<br>";
+      echo "<input type='hidden' name='nombre' value='".$nombre."'>";
+      echo "<input type='hidden' name='descripcion' value='".$descripcion."'>";
+      echo "<input type='hidden' name='imagen' value='".$im."'>";
+      echo "<input type='hidden' name='rutaid' value='0'>";
+      echo "<input type='submit' value='Agregar'>";
+      echo "</form>";
 
 
-<?PHP
-    $usuario = $_SESSION['ID'];
- $link=mysqli_connect("localhost","root","");
- mysqli_select_db($link,"rutasturisticas");
+    }
+    else{
+      if ($ruta1==$ruta2){
+        echo "<h1>No se puede combinar una ruta consigo misma</h1>";
+      }
+      else{
+        echo "<h1>Combinando rutas</h1>";
+      }
+    }
 
-
- $result=mysqli_query($link,"SELECT * FROM rutas WHERE autor='$usuario'");
-
- echo "<table border='1'>";
- echo "<TR><TD> Nombre </TD>
-   <TD> Autor </TD><TD>Descripción</TD><TD> Imagen </TD> <TD> Calificación </TD> </TR>";
-
- while ($row=mysqli_fetch_array($result))
- {
-  $id=$row['id_ruta'];
-  $nombre=utf8_encode($row['nombre']);
-  $autor=$row['autor'];
-  $result2=mysqli_query($link,"SELECT * FROM usuarios WHERE id_user='$autor'");
-  $row2=mysqli_fetch_array($result2);
-  $username=utf8_encode($row2['username']);
-  $desc=utf8_encode($row['descripcion']);
-  $im=$row['imagen'];
-  $cal=$row['calificacion'];
-
-  echo"<TR><TD>$nombre</TD><TD>$username</TD><TD>$desc</TD>
-     <TD>
-     <a href=modificandoRutaUser.php?id_ruta=$id>
-     <img src='img/$im' width='150' height='150'/>
-     </a>
-     </TD> 
-     <TD>$cal</TD>
-     </TR>";  
- }
- mysqli_free_result($result); 
- mysqli_close($link); 
- echo"</table>";
-?>    
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
+    ?>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
   </div>
 </div>
 <div class="wrapper col5">

@@ -59,92 +59,84 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-    <h1>Crea tu ruta </h1>
-
-
-    <p>Crear Ruta</p>
-    <form action="creandoRuta.php" method="POST" enctype="multipart/form-data">
-    Nombre de la ruta:
-    <input type="text" name="nombre" size="50" required>
-    <br>
-    <br>
-    Descripcion:
-    <br>
-    <br>
-    <input type="text" name="descripcion" size="150" required>
-    <br>
-    <br>
-    Opcional 
-    <br>
-    Combinar:
-    <br>
-    <br>
-    <select name="ruta1">
-    <option selected="0"></option>
     <?php
-    $link=mysqli_connect("localhost","root","");
-    mysqli_select_db($link,"rutasturisticas");
+    $punto = $_REQUEST['punto'];
+    $nombre = $_REQUEST['nombre'];
+    $descripcion = $_REQUEST['descripcion'];
+    $imagen = $_REQUEST['imagen'];
+    $usuario = $_SESSION['ID'];
+    $rutaid = $_REQUEST['rutaid'];
 
 
-    $result=mysqli_query($link,"SELECT * FROM rutas");
-    while($row=mysqli_fetch_array($result))
-    {
-      echo "<option value='".$row['id_ruta']."'>".utf8_encode($row['nombre'])."</option>";
+    echo "<h2>Ruta: $nombre </h2>";
+    echo "<p>Descripcion: $descripcion </p>";
+    echo "<p>Imagen: $imagen </p>";
+    echo "<p>Punto: $punto </p>";
+    echo "<p>Usuario: $usuario </p>";
+    echo "<p>Ruta: $rutaid </p>";
+    $link = mysqli_connect("localhost", "root", "");
+    mysqli_select_db($link, "rutasturisticas");
+
+    if ($rutaid==0){
+      echo"que pasa chavales";
+      $sql = "insert into rutas(nombre, autor, descripcion, imagen, calificacion) values ('$nombre', '$usuario', '$descripcion', '$imagen', 0)";
+      $result = mysqli_query($link, $sql);
+      if (!$result) {
+        echo "Error: " . $sql . "<br>" . mysqli_error($link);
+      }
+      $rutaid = mysqli_insert_id($link);
     }
-    echo "</select>";
-    echo "<br>";
-    echo "<br>";
-    echo "con:";
-    echo "<br>";
-    echo "<br>";
-    echo "<select name='ruta2'>";
-    echo "<option selected='0'></option>";
-    $result=mysqli_query($link,"SELECT * FROM rutas");
-    while($row=mysqli_fetch_array($result))
-    {
-      echo "<option value='".$row['id_ruta']."'>".utf8_encode($row['nombre'])."</option>";
+    $sql = "insert into rutapunto(id_ruta, id_punto) values ($rutaid, $punto)";
+
+    mysqli_query($link, $sql);
+
+
+    echo "<h2>Puntos de la ruta:</h2>";
+    $result=mysqli_query($link,"SELECT * FROM rutapunto WHERE id_ruta='$rutaid'");
+    while($row = mysqli_fetch_array($result)){
+      $punto = $row['id_punto'];
+      $result2=mysqli_query($link,"SELECT * FROM puntos WHERE id_punto='$punto'");
+      while($row2 = mysqli_fetch_array($result2)){
+        echo "<p>Punto: ".$row2['nombre']."</p>";
+      }
     }
-    echo "</select>";
 
-    ?>
+    echo "<p>Agregar Puntos</p>";
 
-    <br>
-    <br>
-    Imagen:
-    <input type="file" name="archivo">
-    <br><br>
-    <input type="submit" name="enviar" value="Continuar">
-    </form>
-    <br>
-    <br>
-    <br>
-    <h1>Crear Punto Nuevo</h1>
-    <form action="creaPunto.php">
-    Los puntos disponibles son:
-    <br>
-    <br>
-    <?php
+    echo "<form action='agregaPuntos.php' method='post'>";
     echo "<select name='punto'>";
     $link=mysqli_connect("localhost","root","");
     mysqli_select_db($link,"rutasturisticas");
     $result=mysqli_query($link,"SELECT * FROM puntos");
     while($row=mysqli_fetch_array($result)){
-      echo "<option value='".$row['id']."'>".utf8_encode($row['nombre'])."</option>";
+      echo "<option value='".$row['id_punto']."'>".utf8_encode($row['nombre'])."</option>";
     }
     echo "</select>";
+    echo "<br>";
+    echo "<br>";
+    echo "<input type='hidden' name='nombre' value='".$nombre."'>";
+    echo "<input type='hidden' name='descripcion' value='".$descripcion."'>";
+    echo "<input type='hidden' name='imagen' value='".$imagen."'>";
+    echo "<input type='hidden' name='rutaid' value='".$rutaid."'>";
+    echo "<input type='submit' value='Agregar'>";
+    echo "</form>";
+    echo "<br>";
+    echo "<br>";
     ?>
-    <br>
-    <br>
-
-
-    <input type="submit" value="Crear Punto" />
-    </form>   
-
+    <form action="indexUsuario.php">
+    <input type="submit" value="Listo" />
+    </form>  
+   
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>
 	  <p>&nbsp;</p>
-
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
+	  <p>&nbsp;</p>
   </div>
 </div>
 <div class="wrapper col5">

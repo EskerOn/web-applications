@@ -63,6 +63,44 @@ Licence URI: http://www.os-templates.com/template-terms
 
 <p>Selecciona una ruta para eliminarla</p>
 
+    <?PHP
+        $usuario = $_SESSION['ID'];
+	   $link=mysqli_connect("localhost","root","");
+     mysqli_select_db($link,"rutasturisticas");
+
+
+	   $result=mysqli_query($link,"SELECT * FROM rutas WHERE autor='$usuario'");
+	
+	   echo "<table border='1'>";
+	   echo "<TR><TD> Nombre </TD>
+			 <TD> Autor </TD><TD>Descripción</TD><TD> Imagen </TD> <TD> Calificación </TD> </TR>";
+	
+	   while ($row=mysqli_fetch_array($result))
+	   {
+		  $id=$row['id_ruta'];
+		  $nombre=utf8_encode($row['nombre']);
+		  $autor=$row['autor'];
+      $result2=mysqli_query($link,"SELECT * FROM usuarios WHERE id_user='$autor'");
+      $row2=mysqli_fetch_array($result2);
+      $username=utf8_encode($row2['username']);
+		  $desc=utf8_encode($row['descripcion']);
+		  $im=$row['imagen'];
+      $cal=$row['calificacion'];
+	
+		  echo"<TR><TD>$nombre</TD><TD>$username</TD><TD>$desc</TD>
+			   <TD>
+         <a href=eliminandoRutaUser.php?id_ruta=$id>
+			   <img src='img/$im' width='150' height='150'/>
+         </a>
+			   </TD> 
+         <TD>$cal</TD>
+         </TR>";  
+	   }
+	   mysqli_free_result($result); 
+	   mysqli_close($link); 
+	   echo"</table>";
+	?>    
+
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

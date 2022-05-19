@@ -59,58 +59,36 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <div class="wrapper col4">
   <div id="container">
-  <h1>Modifica ruta </h1>
+  <h1>Elimina ruta </h1>
+    <?PHP
+    $link=mysqli_connect("localhost","root","");
+    mysqli_select_db($link,"rutasturisticas");
+    $rutaid=$_GET['id_ruta'];
+    $slq = "delete from rutas where id_ruta='$rutaid'";
+    $result = mysqli_query($link,$slq);
+    if($result){
+      $slq="delete from rutapunto where id_ruta='$rutaid'";
+      $result=mysqli_query($link,$slq);
+      if($result){
+        echo "Puntos eliminados correctamente";
+      }else{
+        echo "Error al eliminar los puntos";
+      }
+    }else{
+      echo "Error al eliminar la ruta";
+    }
+	?>    
 
-  <p>Selecciona una ruta para modificarla</p>
-
-
-<?PHP
-    $usuario = $_SESSION['ID'];
- $link=mysqli_connect("localhost","root","");
- mysqli_select_db($link,"rutasturisticas");
-
-
- $result=mysqli_query($link,"SELECT * FROM rutas WHERE autor='$usuario'");
-
- echo "<table border='1'>";
- echo "<TR><TD> Nombre </TD>
-   <TD> Autor </TD><TD>Descripción</TD><TD> Imagen </TD> <TD> Calificación </TD> </TR>";
-
- while ($row=mysqli_fetch_array($result))
- {
-  $id=$row['id_ruta'];
-  $nombre=utf8_encode($row['nombre']);
-  $autor=$row['autor'];
-  $result2=mysqli_query($link,"SELECT * FROM usuarios WHERE id_user='$autor'");
-  $row2=mysqli_fetch_array($result2);
-  $username=utf8_encode($row2['username']);
-  $desc=utf8_encode($row['descripcion']);
-  $im=$row['imagen'];
-  $cal=$row['calificacion'];
-
-  echo"<TR><TD>$nombre</TD><TD>$username</TD><TD>$desc</TD>
-     <TD>
-     <a href=modificandoRutaUser.php?id_ruta=$id>
-     <img src='img/$im' width='150' height='150'/>
-     </a>
-     </TD> 
-     <TD>$cal</TD>
-     </TR>";  
- }
- mysqli_free_result($result); 
- mysqli_close($link); 
- echo"</table>";
-?>    
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
   </div>
 </div>
 <div class="wrapper col5">

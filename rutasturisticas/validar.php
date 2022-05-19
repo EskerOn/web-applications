@@ -15,7 +15,7 @@ if ($row=mysqli_fetch_array($result)){
         $ti=$row['tipo'];
         $_SESSION['usuario']=$usu; //session variable
         $_SESSION['tuser']=$ti;
-        $_SESSION['ID']=$row['id_cliente'];
+        $_SESSION['ID']=$row['id_user'];
         if ($ti==1){
             #echo "Usted es cliente <br>";
             header("Location: indexUsuario.php");
